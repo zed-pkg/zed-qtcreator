@@ -1,0 +1,26 @@
+{
+  "schema": "zed-pkg/ide-integration-conformance/v1",
+  "integration": "qtcreator",
+  "repository": "zed-pkg/zed-qtcreator",
+  "contractVersion": 1,
+  "level": {"core": "pass", "nativeShell": "controller-model", "distribution": "repository"},
+  "capabilities": {
+    "multiRootDiscovery": "shell-model",
+    "manifestDiagnostics": true,
+    "lockDiagnostics": true,
+    "materializationDiagnostics": true,
+    "stagingRecovery": true,
+    "argvExecution": true,
+    "boundedExecution": true,
+    "outputRedaction": true,
+    "explicitMutationConfirmation": true,
+    "versionedInspectAdapter": "pending-zed-cli-191",
+    "nativeUnitTests": true,
+    "repoLocalCI": true,
+    "immutableWorkflowInputs": true,
+    "fixedRunnerImages": true,
+    "checkoutCredentialsPersisted": false
+  },
+  "remaining": ["ExtensionSystem::IPlugin shell", "ProjectExplorer and Issues integration", "Qt Creator clean-instance test", "signed plugin packaging"],
+  "linearIssue": "DEN-2508"
+}
