@@ -16,7 +16,10 @@
     "explicitMutationConfirmation": true,
     "versionedInspectAdapter": "pending-zed-cli-191",
     "nativeUnitTests": true,
-    "repoLocalCI": true
+    "repoLocalCI": true,
+    "immutableWorkflowInputs": true,
+    "fixedRunnerImages": true,
+    "checkoutCredentialsPersisted": false
   },
   "remaining": ["ExtensionSystem::IPlugin shell", "ProjectExplorer and Issues integration", "Qt Creator clean-instance test", "signed plugin packaging"],
   "linearIssue": "DEN-2508"
