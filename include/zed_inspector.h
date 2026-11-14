@@ -15,7 +15,7 @@ class Inspector {
  public:
   explicit Inspector(std::string executable = "zed");
   [[nodiscard]] Command command_for(const std::filesystem::path& workspace_root) const;
-  [[nodiscard]] Report validate_report(Report report) const;
+  [[nodiscard]] Report validate_report(Report report, const std::filesystem::path& requested_root) const;
   [[nodiscard]] static std::string redact(std::string_view text);
  private:
   std::string executable_;
