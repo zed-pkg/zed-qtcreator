@@ -15,7 +15,11 @@ Command Inspector::command_for(const std::filesystem::path& workspace_root) cons
   const auto root = std::filesystem::absolute(workspace_root).lexically_normal();
   return Command{executable_, {"inspect", "--workspace", root.string(), "--json"}, root, std::chrono::seconds{30}};
 }
-Report Inspector::validate_report(Report report) const {
+Report Inspector::validate_report(Report report, const std::filesystem::path& requested_root) const {
+  const auto expected_root = std::filesystem::absolute(requested_root).lexically_normal();
+  if (!report.workspace_root.is_absolute() || report.workspace_root.lexically_normal() != expected_root) {
+    return Report{1, expected_root, {Issue{"inspect.root.mismatch", "error", "Inspection workspace mismatch", "The CLI reported a different workspace root.", {}}}};
+  }
   if (report.schema_version != 1) return Report{1, report.workspace_root, {Issue{"inspect.schema.unsupported", "error", "Unsupported Zed inspection schema", "The integration only accepts schemaVersion 1.", {}}}};
   for (auto& issue : report.issues) {
     issue.detail = redact(issue.detail);
